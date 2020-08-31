@@ -4,10 +4,10 @@ function Navbar() {
     return(
         <nav className="nav">
             <div className="mini-nav">
-                Left
+                Title
             </div>
             <div className="mini-nav">
-                Right
+                Cart
             </div>
         </nav>
     )
