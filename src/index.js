@@ -5,10 +5,11 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
-  <React.StrictMode>
+  <div>
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@500&family=Lexend+Peta&display=swap" rel="stylesheet"></link>
     <App />
-  </React.StrictMode>,
+  </div>,
+
   document.getElementById('root')
 );
 
