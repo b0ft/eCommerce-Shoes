@@ -164,19 +164,6 @@ a {
   z-index: 2;
 }
 
-/* .cart-title-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-}
-
-.cart-item {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-} */
-
 .cart-container {
   border: 1px solid black;
   text-align: center;
@@ -196,8 +183,6 @@ a {
 .title {
   text-align: center;
 }
-
-
 
 .up, .down, .remove {
   cursor: pointer;

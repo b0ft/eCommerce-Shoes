@@ -24,28 +24,14 @@ class App extends React.Component {
         this.handleClickDown = this.handleClickDown.bind(this)
     }
 
-    //fungsi untuk menghapus rp dan titik dalam harga
-
     handleClickOverlay() {
-        //   this.setState( prevState => {
-        //       this.state.isOpenned = !prevState.isOpenned
-        //   })
-        // this.setState(prevState => {
-        //     return this.state.isOpenned = !prevState.isOpenned
-        // })
         this.setState({
             isOpenned: true
         })
     }
 
     handleClickAddToCart(id) {
-        // const addToCartButton = document.querySelector('.add-to-cart')
-        // const productImgSrc = e.target.previousElementSibling.getAttribute("src")
-        // const productName = e.target.parentElement.nextElementSibling.innerHTML
-        // const hargaString = e.target.parentElement.nextElementSibling.nextElementSibling.innerHTML
-        // const hargaNumber = hargaString.split("Rp")[1].split(".").join("")
         this.setState(prevState => {
-            // prevState.totalToPay =
 
             const tes = prevState.products.map(item =>{
                 if(item.id === id) {

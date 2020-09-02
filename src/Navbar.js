@@ -1,14 +1,6 @@
 import React from 'react'
 
 class Navbar extends React.Component {
-    // componentDidMount() {
-    //     const nav = document.querySelector(".nav")
-    //     const sticky = nav.offsetTop
-    //     window.onscroll = () => {
-    //         window.pageYOffset > sticky ? nav.classList.add("sticky") : nav.classList.remove("sticky")
-    //     }
-    // }
-
     render() {
         return(
             <nav className="nav">
@@ -21,8 +13,6 @@ class Navbar extends React.Component {
             </nav>
         )
     }
-    
-
 }
 
 export default Navbar

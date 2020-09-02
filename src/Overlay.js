@@ -1,16 +1,7 @@
 import React from 'react'
-// import image1 from './1.webp'
 
 class Overlay extends React.Component {
-    componentDidMount() {
-        const component = document.querySelector('.overlay')
-        // component.classList.add('invisible')
-        // console.log(this.props.isOpenned)
-        // this.props.isOpenned != true ? component.classList.add('invisible') : null
-        // if(this.props.isOpenned != true){
-        //     console.log('tes')
-        // }
-    }
+
     render() { 
         return (
             <div className={`overlay ${this.props.isOpenned !== true && "invisible"}`}>
@@ -23,13 +14,7 @@ class Overlay extends React.Component {
                     <h4 className="cart-title">Quantity</h4>
                     <h4 className="cart-title">Remove</h4>
                     <h4 className="cart-title">Total</h4>
-                {/* </div>
-                <div className="main-overlay"> */}
-                    {/* <div className="cart-item">
-                        <img className src={image1} alt="" />
-                    </div> */}
                     {this.props.products.map(item => {
-                        
                         return(
                             item.inCart && 
                                 <>
@@ -44,7 +29,6 @@ class Overlay extends React.Component {
                         )
                     })}
                 </div>
-
                 <span>Clear Cart</span><br />
                 <span>Total : Rp{this.props.totalToPay.toLocaleString('id-ID')}</span>
             </div>
