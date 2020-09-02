@@ -164,6 +164,32 @@ a {
   z-index: 2;
 }
 
+.cart-title-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.cart-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.cart-img {
+  width: 150px;
+  height: 150px;
+}
+
+.title {
+  text-align: center;
+}
+
+.remove {
+  cursor: pointer;
+}
+
 .close-button {
   position: absolute;
   right: 0;
