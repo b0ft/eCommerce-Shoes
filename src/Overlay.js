@@ -29,19 +29,24 @@ class Overlay extends React.Component {
                         <img className src={image1} alt="" />
                     </div> */}
                     {this.props.products.map(item => {
+                        
                         return(
                             item.inCart && 
                                 <>
                                     <img className="cart-img" src={require(`${item.img}`)} alt="" />
                                     <h5>{item.title}</h5>
                                     <h5>Rp{item.price.toLocaleString("id-ID")}</h5>
-                                    <h5><span className="up">&uarr;</span><br/>{item.count}<br/><span className="down">&darr;</span></h5>
+                                    <h5><span className="up" onClick={() => this.props.handleClickUp(item.id)}>&uarr;</span><br/>{item.count}<br/><span className="down" onClick={() => this.props.handleClickDown(item.id)}>&darr;</span></h5>
                                     <span className="remove" onClick={() => this.props.handleClickRemove(item.id)}>Remove</span>
-                                    <h5> {item.total} </h5>
+                                    <h5>Rp{item.total.toLocaleString('id-ID')}</h5>
+                                    
                                 </> 
                         )
                     })}
                 </div>
+
+                <span>Clear Cart</span><br />
+                <span>Total : Rp{this.props.totalToPay.toLocaleString('id-ID')}</span>
             </div>
         )
     }

@@ -13,12 +13,15 @@ class App extends React.Component {
         super()
         this.state = {
             isOpenned: false,
-            products: storeProducts
+            products: storeProducts,
+            totalToPay: 0
         }
         this.handleCloseOverlay = this.handleCloseOverlay.bind(this)
         this.handleClickOverlay = this.handleClickOverlay.bind(this)
         this.handleClickAddToCart = this.handleClickAddToCart.bind(this)
         this.handleClickRemove = this.handleClickRemove.bind(this)
+        this.handleClickUp = this.handleClickUp.bind(this)
+        this.handleClickDown = this.handleClickDown.bind(this)
     }
 
     //fungsi untuk menghapus rp dan titik dalam harga
@@ -42,11 +45,14 @@ class App extends React.Component {
         // const hargaString = e.target.parentElement.nextElementSibling.nextElementSibling.innerHTML
         // const hargaNumber = hargaString.split("Rp")[1].split(".").join("")
         this.setState(prevState => {
+            // prevState.totalToPay =
+
             const tes = prevState.products.map(item =>{
                 if(item.id === id) {
                     item.inCart = true
                     item.count = 1
-                    item.total = 1
+                    item.total = item.price * item.count
+                    prevState.totalToPay += item.total
                 }
                 return item
             })
@@ -68,7 +74,41 @@ class App extends React.Component {
                 if(item.id === id) {
                     item.inCart = false
                     item.count = 0
-                    item.total = 0
+                    prevState.totalToPay -= item.total
+                }
+                return item
+            })
+            return {
+                products: tes
+            }
+        })
+    }
+
+    handleClickUp(id) {
+        this.setState(prevState => {
+            const tes = prevState.products.map(item =>{
+                if(item.id === id) {
+                    item.count += 1
+                    item.total = item.price * item.count
+                    prevState.totalToPay += item.price
+                }
+                return item
+            })
+            return {
+                products: tes
+            }
+        })
+    }
+
+    handleClickDown(id) {
+        this.setState(prevState => {
+            const tes = prevState.products.map(item =>{
+                if(item.id === id) {
+                    if(item.count > 1){
+                        item.count -= 1
+                        item.total = item.price * item.count
+                        prevState.totalToPay -= item.price
+                    }
                 }
                 return item
             })
@@ -90,6 +130,9 @@ class App extends React.Component {
                 handleCloseOverlay={this.handleCloseOverlay}
                 products={this.state.products}
                 handleClickRemove={this.handleClickRemove}
+                handleClickUp={this.handleClickUp}
+                handleClickDown={this.handleClickDown}
+                totalToPay={this.state.totalToPay}
             />
         </div>
         )
