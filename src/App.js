@@ -18,6 +18,7 @@ class App extends React.Component {
         this.handleCloseOverlay = this.handleCloseOverlay.bind(this)
         this.handleClickOverlay = this.handleClickOverlay.bind(this)
         this.handleClickAddToCart = this.handleClickAddToCart.bind(this)
+        this.handleClickRemove = this.handleClickRemove.bind(this)
     }
 
     //fungsi untuk menghapus rp dan titik dalam harga
@@ -61,6 +62,22 @@ class App extends React.Component {
         })
     }
 
+    handleClickRemove(id) {
+        this.setState(prevState => {
+            const tes = prevState.products.map(item =>{
+                if(item.id === id) {
+                    item.inCart = false
+                    item.count = 0
+                    item.total = 0
+                }
+                return item
+            })
+            return {
+                products: tes
+            }
+        })
+    }
+
     render() {
         return (
         <div>
@@ -72,6 +89,7 @@ class App extends React.Component {
                 isOpenned={this.state.isOpenned} 
                 handleCloseOverlay={this.handleCloseOverlay}
                 products={this.state.products}
+                handleClickRemove={this.handleClickRemove}
             />
         </div>
         )
