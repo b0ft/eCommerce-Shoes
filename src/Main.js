@@ -1,10 +1,10 @@
 import React from 'react'
 
 class Main extends React.Component {
-
     render() {
         return(
             <main>
+                <h1 className="title-main">Our Products</h1>
                 <div className="products-grid">
                     {this.props.products.map(item => {
                         return(<div className="product">

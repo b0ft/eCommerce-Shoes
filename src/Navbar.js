@@ -1,6 +1,17 @@
 import React from 'react'
 
 class Navbar extends React.Component {
+    componentDidMount() {
+        
+        const header = document.querySelector(".nav")
+        const sticky = header.offsetTop
+        
+        const scrollFixed = () => {
+            window.pageYOffset > sticky ? header.classList.add("sticky") : header.classList.remove("sticky")
+        }
+        window.onscroll = function() {scrollFixed()}
+    }
+
     render() {
         return(
             <nav className="nav">

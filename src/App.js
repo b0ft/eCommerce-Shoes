@@ -22,6 +22,7 @@ class App extends React.Component {
         this.handleClickRemove = this.handleClickRemove.bind(this)
         this.handleClickUp = this.handleClickUp.bind(this)
         this.handleClickDown = this.handleClickDown.bind(this)
+        this.handleClearCart = this.handleClearCart.bind(this)
     }
 
     handleClickOverlay() {
@@ -33,8 +34,10 @@ class App extends React.Component {
     handleClickAddToCart(id) {
         this.setState(prevState => {
 
-            const tes = prevState.products.map(item =>{
-                if(item.id === id) {
+            const newProducts = prevState.products.map(item =>{
+                if(item.inCart == true)
+                    return item
+                else if(item.id === id) {
                     item.inCart = true
                     item.count = 1
                     item.total = item.price * item.count
@@ -43,7 +46,7 @@ class App extends React.Component {
                 return item
             })
             return {
-                products: tes
+                products: newProducts
             }
         })
     }
@@ -56,7 +59,7 @@ class App extends React.Component {
 
     handleClickRemove(id) {
         this.setState(prevState => {
-            const tes = prevState.products.map(item =>{
+            const newProducts = prevState.products.map(item =>{
                 if(item.id === id) {
                     item.inCart = false
                     item.count = 0
@@ -65,14 +68,14 @@ class App extends React.Component {
                 return item
             })
             return {
-                products: tes
+                products: newProducts
             }
         })
     }
 
     handleClickUp(id) {
         this.setState(prevState => {
-            const tes = prevState.products.map(item =>{
+            const newProducts = prevState.products.map(item =>{
                 if(item.id === id) {
                     item.count += 1
                     item.total = item.price * item.count
@@ -81,14 +84,14 @@ class App extends React.Component {
                 return item
             })
             return {
-                products: tes
+                products: newProducts
             }
         })
     }
 
     handleClickDown(id) {
         this.setState(prevState => {
-            const tes = prevState.products.map(item =>{
+            const newProducts = prevState.products.map(item =>{
                 if(item.id === id) {
                     if(item.count > 1){
                         item.count -= 1
@@ -99,7 +102,21 @@ class App extends React.Component {
                 return item
             })
             return {
-                products: tes
+                products: newProducts
+            }
+        })
+    }
+
+    handleClearCart() {
+        this.setState(() => {
+            const newProducts = this.state.products.map(item =>{
+                item.inCart = false
+                item.count = 0
+                this.state.totalToPay = 0
+                return item
+            })
+            return {
+                products: newProducts
             }
         })
     }
@@ -119,6 +136,7 @@ class App extends React.Component {
                 handleClickUp={this.handleClickUp}
                 handleClickDown={this.handleClickDown}
                 totalToPay={this.state.totalToPay}
+                handleClearCart={this.handleClearCart}
             />
         </div>
         )
