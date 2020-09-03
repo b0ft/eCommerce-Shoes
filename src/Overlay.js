@@ -4,7 +4,7 @@ class Overlay extends React.Component {
 
     render() { 
         return (
-            this.props.totalToPay == 0 ? 
+            this.props.totalToPay === 0 ? 
             <div className={`overlay ${this.props.isOpenned !== true && "invisible"}`}>
                 <span className="close-button" onClick={this.props.handleCloseOverlay}>X</span><br />
                 <h1 className="title">Your cart is currently empty.</h1> 

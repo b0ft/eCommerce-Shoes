@@ -35,7 +35,7 @@ class App extends React.Component {
         this.setState(prevState => {
 
             const newProducts = prevState.products.map(item =>{
-                if(item.inCart == true)
+                if(item.inCart === true)
                     return item
                 else if(item.id === id) {
                     item.inCart = true
@@ -112,7 +112,9 @@ class App extends React.Component {
             const newProducts = this.state.products.map(item =>{
                 item.inCart = false
                 item.count = 0
-                this.state.totalToPay = 0
+                this.setState({
+                    totalToPay : 0
+                })
                 return item
             })
             return {
